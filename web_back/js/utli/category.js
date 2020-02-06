@@ -20,5 +20,17 @@ var category = {
     del: function (weiyi) {
         return $.post(APIURL.category_del, { id: weiyi })
 
+    },
+    //编辑文章
+    edit: function (id, name, slug) {
+        return $.post(APIURL.category_edit,
+            {
+                id: id,
+                name: name,
+                slug: slug
+
+            }
+        )
     }
+
 }

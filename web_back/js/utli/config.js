@@ -12,5 +12,8 @@ var APIURL = {
     //添加文章
     category_add: BASEURL + "/admin/category_add",
     //删除文章
-    category_del: BASEURL + "/admin/category_delete"
+    category_del: BASEURL + "/admin/category_delete",
+    //编辑文章
+    category_edit: BASEURL + "/admin/category_edit"
+
 }

@@ -16,8 +16,9 @@
     <script src="./js/utli/category.js"></script>
     <!-- 引入模板引擎 -->
     <script src="../js库/template-web.js"></script>
-    <script src="./js/utli/category.js"></script>
     <script src="./js/utli/config.js"></script>
+    <script src="./js/utli/category.js"></script>
+
 </head>
 
 <body>
@@ -238,14 +239,8 @@
             var id = $("#edit_id").val().trim()
             var name = $("#edit_name").val().trim()
             var slug = $("#edit_slug").val().trim()
-            $.post("http://39.99.130.177:8000/admin/category_edit",
-                {
-                    id: id,
-                    name: name,
-                    slug: slug
 
-                }
-            ).then(function (res) {
+            category.edit(id, name, slug).then(function (res) {
                 console.log(res);
                 $("#editModal").modal("hide")
                 getAndShow();
