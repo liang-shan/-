@@ -15,6 +15,10 @@
     <script src="js/jedate/js/jedate.js"></script>
     <script src="js/tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="js/tinymce/js/tinymce_setup.js"></script>
+    <script src="./js/utli/config.js"></script>
+    <script src="./js/utli/category.js"></script>
+    <!-- 引入模板引擎 -->
+    <script src="../js库/template-web.js"></script>
 </head>
 
 <body>
@@ -66,7 +70,8 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="rich_content" name="content" placeholder="文章内容" value="文章内容">
+                        <input type="text" class="form-control" id="rich_content" name="content" placeholder="文章内容"
+                            value="文章内容">
                     </div>
                 </div>
                 <div class="form-group">
@@ -78,4 +83,39 @@
         </div>
     </div>
 </body>
+<!-- 定义模板 -->
+<script type="text/html" id="leibie">
+{{each data item}}
+ <option>{{item.name}}</option>
+{{/each}}
+</script>
+<script>
+    //文章信息分类显示
+    //思路:从后端获取数据,显示到页面上(用模板引擎)
+    //求数据
+    //从接口调数据  显示在表格中 
+    function getAndShow() {
+        category.get().then(function (res) {
+            console.log(res);
+            //数据渲染到页面上,用模板引擎
+            var temstr = template("leibie", res)
+
+            //console.log(temstr);
+            // 渲染到页面
+            $(".form-control").html(temstr)
+
+        })
+    }
+    getAndShow();
+
+    //获取当前要编辑的文章
+    console.log(window.location);
+    console.log(window.location.search);
+
+    // substr(4)从字符串中提取字符  一个参数就是从第三个开始截取后边的
+    // substr(开始,4)从第几个开始截取几个
+
+
+</script>
+
 </html>
